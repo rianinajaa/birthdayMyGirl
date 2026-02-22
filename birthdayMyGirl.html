@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 17th Birthday, Sayangku 🎀</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink-deep: #e8578a;
+    --pink-mid: #f472b6;
+    --pink-light: #fce7f3;
+    --pink-blush: #fbcfe8;
+    --pink-pale: #fdf2f8;
+    --gold: #f9a8d4;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Quicksand', sans-serif;
+    background: var(--pink-pale);
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom Cursor */
+  .cursor {
+    width: 16px; height: 16px;
+    background: var(--pink-deep);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, background 0.2s;
+    mix-blend-mode: multiply;
+  }
+  .cursor-trail {
+    width: 8px; height: 8px;
+    background: var(--pink-mid);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: left 0.15s, top 0.15s;
+    opacity: 0.6;
+  }
+
+  /* Floating Particles */
+  .particles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .particle {
+    position: absolute;
+    bottom: -20px;
+    font-size: 1.2rem;
+    animation: floatUp linear infinite;
+    opacity: 0.7;
+  }
+  @keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* Hero Section */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 40%, #fbcfe8 100%);
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(ellipse at 60% 40%, rgba(244,114,182,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 30% 70%, rgba(232,87,138,0.1) 0%, transparent 50%);
+    animation: bgPulse 6s ease-in-out infinite alternate;
+  }
+  @keyframes bgPulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+  }
+
+  .ribbon {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    color: var(--pink-deep);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeSlide 1s ease forwards 0.3s;
+    position: relative; z-index: 1;
+  }
+
+  .main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 10vw, 7rem);
+    font-weight: 700;
+    color: var(--pink-deep);
+    line-height: 1.1;
+    opacity: 0;
+    animation: fadeSlide 1s ease forwards 0.6s;
+    position: relative; z-index: 1;
+    text-shadow: 3px 3px 0 rgba(232,87,138,0.15);
+  }
+  .main-title span {
+    display: block;
+    font-style: italic;
+    font-size: 0.5em;
+    color: var(--pink-mid);
+  }
+
+  .age-badge {
+    width: clamp(100px, 20vw, 150px);
+    height: clamp(100px, 20vw, 150px);
+    background: linear-gradient(135deg, var(--pink-deep), var(--pink-mid));
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Playfair Display', serif;
+    margin: 1.5rem auto;
+    box-shadow: 0 10px 40px rgba(232,87,138,0.4), 0 0 0 8px rgba(244,114,182,0.2);
+    opacity: 0;
+    animation: popIn 0.8s cubic-bezier(0.175,0.885,0.32,1.275) forwards 1s;
+    position: relative; z-index: 1;
+  }
+  .age-badge .num {
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1;
+  }
+  .age-badge .th {
+    font-size: clamp(0.7rem, 2vw, 0.9rem);
+    letter-spacing: 0.15em;
+    opacity: 0.9;
+  }
+
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  /* Scroll Indicator */
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--pink-mid);
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: fadeSlide 1s ease forwards 2s;
+    z-index: 1;
+  }
+  .scroll-hint::after {
+    content: '↓';
+    font-size: 1.2rem;
+    animation: bounce 1.5s ease infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  /* Section Styles */
+  section {
+    padding: 5rem 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* Message Section */
+  .message-section {
+    background: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .message-section::before {
+    content: '♡';
+    position: absolute;
+    font-size: 20rem;
+    color: var(--pink-light);
+    top: -5rem;
+    right: -5rem;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .label {
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--pink-mid);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: var(--pink-deep);
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .message-text {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    line-height: 1.9;
+    color: #7d4e6b;
+  }
+
+  .quote-block {
+    border-left: 4px solid var(--pink-mid);
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    background: var(--pink-pale);
+    border-radius: 0 12px 12px 0;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--pink-deep);
+  }
+
+  /* Reasons Section */
+  .reasons-section {
+    background: linear-gradient(160deg, #fce7f3, #fdf2f8);
+  }
+
+  .reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+    margin-top: 2.5rem;
+  }
+
+  .reason-card {
+    background: white;
+    border-radius: 20px;
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(232,87,138,0.1);
+    border: 1.5px solid var(--pink-blush);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: default;
+  }
+  .reason-card:hover {
+    transform: translateY(-8px) rotate(1deg);
+    box-shadow: 0 12px 40px rgba(232,87,138,0.2);
+  }
+  .reason-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+  .reason-card h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--pink-deep);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .reason-card p {
+    font-size: 0.9rem;
+    color: #9d6688;
+    line-height: 1.6;
+  }
+
+  /* Wish Section */
+  .wish-section {
+    background: linear-gradient(135deg, var(--pink-deep) 0%, var(--pink-mid) 100%);
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .wish-section::before,
+  .wish-section::after {
+    content: '✦';
+    position: absolute;
+    color: rgba(255,255,255,0.1);
+    font-size: 15rem;
+  }
+  .wish-section::before { top: -4rem; left: -4rem; }
+  .wish-section::after { bottom: -4rem; right: -4rem; }
+
+  .wish-section .section-heading { color: white; }
+  .wish-section .label { color: rgba(255,255,255,0.7); }
+  .wish-text {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    line-height: 1.9;
+    color: rgba(255,255,255,0.9);
+    position: relative; z-index: 1;
+  }
+
+  /* Countdown / Cake */
+  .cake-section {
+    background: white;
+    text-align: center;
+  }
+
+  .cake-container {
+    font-size: clamp(4rem, 15vw, 8rem);
+    margin: 2rem auto;
+    display: inline-block;
+    animation: cakeWiggle 2s ease-in-out infinite;
+    filter: drop-shadow(0 10px 20px rgba(232,87,138,0.3));
+  }
+  @keyframes cakeWiggle {
+    0%, 100% { transform: rotate(-3deg) scale(1); }
+    50% { transform: rotate(3deg) scale(1.05); }
+  }
+
+  .candles-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    color: var(--pink-deep);
+    font-style: italic;
+  }
+
+  /* Confetti Button */
+  .confetti-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, var(--pink-deep), var(--pink-mid));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(232,87,138,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .confetti-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+  }
+  .confetti-btn:hover::before { left: 100%; }
+  .confetti-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 35px rgba(232,87,138,0.5);
+  }
+  .confetti-btn:active { transform: scale(0.97); }
+
+  /* Confetti Canvas */
+  #confettiCanvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--pink-pale);
+    text-align: center;
+    padding: 2.5rem 1rem;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--pink-mid);
+    font-size: 1.1rem;
+    border-top: 1px solid var(--pink-blush);
+  }
+
+  /* Scroll Reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== QUIZ SECTION ===== */
+  .quiz-section {
+    background: linear-gradient(135deg, #fff0f7 0%, #fce7f3 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .quiz-section::before {
+    content: '🧠';
+    position: absolute;
+    font-size: 18rem;
+    opacity: 0.04;
+    top: -3rem; left: -3rem;
+    pointer-events: none;
+  }
+
+  .quiz-box {
+    background: white;
+    border-radius: 28px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 8px 40px rgba(232,87,138,0.12);
+    border: 2px solid var(--pink-blush);
+    margin-top: 2rem;
+    position: relative;
+  }
+
+  .quiz-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--pink-light);
+    border-radius: 99px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+  }
+  .quiz-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--pink-deep), var(--pink-mid));
+    border-radius: 99px;
+    transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .quiz-counter {
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--pink-mid);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .quiz-question {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+    color: var(--pink-deep);
+    margin-bottom: 1.8rem;
+    line-height: 1.4;
+  }
+
+  .quiz-options {
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .quiz-option {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.9rem 1.2rem;
+    border: 2px solid var(--pink-blush);
+    border-radius: 14px;
+    background: var(--pink-pale);
+    cursor: pointer;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #7d4e6b;
+    transition: all 0.25s;
+    text-align: left;
+    width: 100%;
+  }
+  .quiz-option:hover:not(:disabled) {
+    border-color: var(--pink-mid);
+    background: var(--pink-light);
+    transform: translateX(4px);
+  }
+  .quiz-option .opt-letter {
+    width: 32px; height: 32px;
+    min-width: 32px;
+    background: white;
+    border: 2px solid var(--pink-blush);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--pink-deep);
+    transition: all 0.25s;
+  }
+  .quiz-option:hover:not(:disabled) .opt-letter {
+    background: var(--pink-mid);
+    color: white;
+    border-color: var(--pink-mid);
+  }
+  .quiz-option.correct {
+    border-color: #4ade80;
+    background: #f0fdf4;
+    color: #166534;
+  }
+  .quiz-option.correct .opt-letter {
+    background: #4ade80;
+    border-color: #4ade80;
+    color: white;
+  }
+  .quiz-option.wrong {
+    border-color: #f87171;
+    background: #fff1f2;
+    color: #991b1b;
+  }
+  .quiz-option.wrong .opt-letter {
+    background: #f87171;
+    border-color: #f87171;
+    color: white;
+  }
+  .quiz-option:disabled { cursor: not-allowed; opacity: 0.7; }
+
+  .quiz-feedback {
+    margin-top: 1.2rem;
+    padding: 1rem 1.2rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.5;
+    display: none;
+  }
+  .quiz-feedback.show { display: block; animation: fadeSlide 0.3s ease; }
+  .quiz-feedback.correct-fb { background: #f0fdf4; color: #166534; border: 1.5px solid #86efac; }
+  .quiz-feedback.wrong-fb { background: #fff1f2; color: #991b1b; border: 1.5px solid #fca5a5; }
+
+  .quiz-next-btn {
+    margin-top: 1.5rem;
+    padding: 0.85rem 2rem;
+    background: linear-gradient(135deg, var(--pink-deep), var(--pink-mid));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(232,87,138,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: none;
+  }
+  .quiz-next-btn.show { display: inline-block; animation: fadeSlide 0.3s ease; }
+  .quiz-next-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(232,87,138,0.45); }
+
+  /* Result Screen */
+  .quiz-result {
+    text-align: center;
+    display: none;
+  }
+  .quiz-result.show { display: block; animation: popIn 0.5s cubic-bezier(0.175,0.885,0.32,1.275); }
+  .quiz-result .result-emoji {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    display: block;
+    animation: cakeWiggle 2s ease-in-out infinite;
+  }
+  .quiz-result h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    color: var(--pink-deep);
+    margin-bottom: 0.8rem;
+  }
+  .quiz-result .result-score {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--pink-mid);
+    font-family: 'Playfair Display', serif;
+    margin: 0.5rem 0;
+  }
+  .quiz-result .result-msg {
+    color: #7d4e6b;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 1rem 0 1.5rem;
+  }
+  .quiz-restart-btn {
+    padding: 0.85rem 2rem;
+    background: white;
+    color: var(--pink-deep);
+    border: 2px solid var(--pink-mid);
+    border-radius: 50px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .quiz-restart-btn:hover {
+    background: var(--pink-pale);
+    transform: translateY(-2px);
+  }
+
+  .sparkle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9990;
+    font-size: 1.2rem;
+    animation: sparkleAnim 0.8s ease forwards;
+  }
+  @keyframes sparkleAnim {
+    0% { opacity: 1; transform: scale(0) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.5) rotate(180deg); }
+    100% { opacity: 0; transform: scale(0) rotate(360deg) translateY(-30px); }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="confettiCanvas"></canvas>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+
+<div class="particles" id="particles"></div>
+
+
+<section class="hero">
+  <p class="ribbon">✦ selamat Ulang Tahun ✦</p>
+  <h1 class="main-title">
+    Happy Birthday,
+    <span>sayangkuuu ♡</span>
+  </h1>
+  <div class="age-badge">
+    <span class="num">17</span>
+    <span class="th">years old</span>
+  </div>
+  <div class="scroll-hint">scroll</div>
+</section>
+
+
+<section class="quiz-section">
+  <div class="section-inner reveal">
+    <span class="label">✦ are you ready? ✦</span>
+    <h2 class="section-heading">quiz: seberapa kenal kamuu samaa akuu? 🧐</h2>
+    <p class="message-text" style="margin-bottom:0.5rem;">jawab pertanyaan di bawah yaa dan buktiiin kamu memang paling kenal sama akuu! 😄hhe.</p>
+
+    <div class="quiz-box">
+      <div class="quiz-progress-bar">
+        <div class="quiz-progress-fill" id="quizProgress" style="width:0%"></div>
+      </div>
+      <div id="quizScreen">
+        <span class="quiz-counter" id="quizCounter">pertanyaan 1 dari 7</span>
+        <p class="quiz-question" id="quizQuestion"></p>
+        <div class="quiz-options" id="quizOptions"></div>
+        <div class="quiz-feedback" id="quizFeedback"></div>
+        <button class="quiz-next-btn" id="quizNextBtn" onclick="nextQuestion()">pertanyaan selanjutnya →</button>
+      </div>
+      <div class="quiz-result" id="quizResult">
+        <span class="result-emoji" id="resultEmoji"></span>
+        <h3 id="resultTitle"></h3>
+        <div class="result-score" id="resultScore"></div>
+        <p class="result-msg" id="resultMsg"></p>
+        <button class="quiz-restart-btn" onclick="restartQuiz()">🔄 coba lagiii yaa nantii</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MESSAGE -->
+<section class="message-section">
+  <div class="section-inner reveal">
+    <span class="label">✦ dari hatiku untukmu ✦</span>
+    <h2 class="section-heading">Kamu adalah hal terbaik yang pernah ada dalam hidupku</h2>
+    <p class="message-text">
+      Di hari yang sangat istimewa ini, aku ingin kamu tahu betapa besar cintaku untukmu.
+      Setiap hari bersamamu selalu terasa seperti hadiah tawamu, senyummu, dan semua kebaikan
+      yang ada dalam dirimu membuatku jatuh cinta berkali-kali setiap harinya.
+    </p>
+    <div class="quote-block">
+      "you are my favorite reason to smile every single day."
+    </div>
+    <p class="message-text">
+      hari ini kamu genap 17 tahun. Semua perjalananmu sampai sejauh ini sungguh luar biasa,
+      dan aku sangat bangga menjadi bagian dari cerita hidupmu. Kamu tumbuh menjadi seseorang
+      yang begitu kuat, cantik, dan penuh kasih — dan aku bersyukur kamu ada.
+    </p>
+  </div>
+</section>
+
+<!-- REASONS -->
+<section class="reasons-section">
+  <div class="section-inner reveal">
+    <span class="label">✦ kenapa kamu spesial ✦</span>
+    <h2 class="section-heading">hal-hal yang aku cintai dari kamu</h2>
+    <div class="reasons-grid">
+      <div class="reason-card reveal">
+        <span class="icon">😊</span>
+        <h3>Senyumanmu</h3>
+        <p>Senyumanmu bisa menerangi hari-hariku yang paling gelap sekalipun.</p>
+      </div>
+      <div class="reason-card reveal">
+        <span class="icon">💖</span>
+        <h3>Ketulusanmu</h3>
+        <p>Kamu selalu tulus dalam segala hal, dan itu sangat langka dan berharga.</p>
+      </div>
+      <div class="reason-card reveal">
+        <span class="icon">🌸</span>
+        <h3>Kelembutan Hatimu</h3>
+        <p>Hatimu selembut kelopak bunga — penuh kasih dan kehangatan.</p>
+      </div>
+      <div class="reason-card reveal">
+        <span class="icon">✨</span>
+        <h3>Semangatmu</h3>
+        <p>Semangat dan tekadmu selalu menginspirasi aku untuk menjadi lebih baik.</p>
+      </div>
+      <div class="reason-card reveal">
+        <span class="icon">🎵</span>
+        <h3>Tawamu</h3>
+        <p>Tawa manja dan jujurmu adalah lagu favorit yang tak pernah bosen aku dengar.</p>
+      </div>
+      <div class="reason-card reveal">
+        <span class="icon">🌟</span>
+        <h3>Segalanya</h3>
+        <p>Honestly, aku mencintai semua bagian dari dirimu tanpa terkecuali.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAKE -->
+<section class="cake-section">
+  <div class="section-inner reveal">
+    <span class="label">✦ make a wish ✦</span>
+    <h2 class="section-heading">tiup lilinnya yaa dan buat harapan!</h2>
+    <div class="cake-container">🎂</div>
+    <p class="candles-text">17 lilin menyala penuh cinta untukmu 🕯️</p>
+    <br>
+    <button class="confetti-btn" onclick="launchConfetti()">🎉 tiup lilinnya!</button>
+  </div>
+</section>
+
+<!-- WISHES -->
+<section class="wish-section">
+  <div class="section-inner reveal">
+    <span class="label">✦ my wish for you ✦</span>
+    <h2 class="section-heading">Doa & Harapan Untukmu</h2>
+    <p class="wish-text">
+      Di umur 17 ini, semoga setiap langkahmu selalu dipenuhi kebahagiaan, kesuksesan, dan cinta.
+      Semoga mimpi-mimpimu yang indah semua terwujud satu per satu. Semoga kamu selalu sehat,
+      selalu berbahagia, dan selalu tahu betapa berharganya dirimu.
+      <br><br>
+      <em>"May every day of your 17th year be as beautiful as you are."</em>
+      <br><br>
+      Aku akan selalu ada untukmu, mendukungmu, dan mencintaimu — hari ini, esok,
+      dan seterusnya. Selamat ulang tahun, sayangku. 💗
+    </p>
+  </div>
+</section>
+
+<footer>
+  Made with ♡ especially for you — Happy 17th Birthday!
+</footer>
+
+<script>
+  // ===== QUIZ DATA =====
+  // 💡 EDIT JAWABAN YANG BENAR (correct: index 0-3) DAN PERTANYAAN SESUAI KENYATAAN!
+  const quizData = [
+    {
+      q: "Apa makanan favoritku yang bisa aku makan setiap hari tanpa bosen?",
+      opts: ["Mie ayam 🍜", "Bakso 🍡", "Sushi 🍣", "Pizza 🍕"],
+      correct: 0,
+      feedback: {
+        right: "Benar!! Kamu memang tau banget selera aku 😍 Mie ayam forever!",
+        wrong: "Salah sayang~ Aku paling suka mie ayam! Hafalin ya buat next date 😄"
+      }
+    },
+    {
+      q: "Kalau aku lagi sedih, apa yang paling bisa bikin aku ketawa?",
+      opts: ["Video kucing lucu 🐱", "Meme random", "Dikirim voice note yang lucu", "Diajak nonton film komedi"],
+      correct: 2,
+      feedback: {
+        right: "Hahaha yesss! Suara kamu itu obat paling mujarab buat aku 🥰",
+        wrong: "Enggak sayang~ yang paling ampuh itu voice note kamu yang lebay lucu itu! 😂"
+      }
+    },
+    {
+      q: "Apa hal pertama yang aku lakuin pas bangun tidur?",
+      opts: ["Langsung cek HP", "Minum air putih dulu", "Tidur lagi 😴", "Stretching / olahraga"],
+      correct: 0,
+      feedback: {
+        right: "BENER DONG! Dan yang pertama aku cek pasti chat kamu 😌💗",
+        wrong: "Salah! Jawaban yang bener: langsung cek HP — dan chat kamu yang pertama! 😂"
+      }
+    },
+    {
+      q: "Genre film apa yang paling aku suka?",
+      opts: ["Horror 👻", "Romance 💕", "Action 💥", "Thriller/Mystery 🔍"],
+      correct: 1,
+      feedback: {
+        right: "Yep! Film romance yang bikin nangis sambil pelukan tuh the best 😭💕",
+        wrong: "Kurang tepat~ Aku paling suka romance! Apalagi nonton bareng kamu 🥰"
+      }
+    },
+    {
+      q: "Kalau aku bisa liburan ke mana aja, aku paling pengen ke?",
+      opts: ["Bali 🌴", "Jepang 🇯🇵", "Paris 🗼", "Korea 🇰🇷"],
+      correct: 1,
+      feedback: {
+        right: "YASSSS Jepang!! Kita harus ke sana bareng suatu hari nanti 🌸✈️",
+        wrong: "Jawabannya Jepang! Aku udah ngidam ke sana dari dulu 😍 Antar aku ya!"
+      }
+    },
+    {
+      q: "Jam berapa biasanya aku mulai ngantuk di malam hari?",
+      opts: ["Jam 9 malem", "Jam 10-11 malem", "Tengah malam", "Jam 1-2 pagi"],
+      correct: 2,
+      feedback: {
+        right: "Correct! Dan biasanya masih sambil chatting sama kamu juga sih 😝",
+        wrong: "Salah~ aku biasanya baru ngantuk tengah malam! Makanya suka begadang 😅"
+      }
+    },
+    {
+      q: "Apa kata-kata yang paling sering aku bilang ke kamu?",
+      opts: ['"Aku kangen kamu 🥺"', '"Kamu tuh lucu banget deh"', '"Aku sayang kamu ❤️"', '"Kamu lagi ngapain?"'],
+      correct: 2,
+      feedback: {
+        right: "Iya sayang~ karena itu emang yang paling aku rasain! I love you 💗",
+        wrong: "Hmm, yang paling sering aku bilang itu 'Aku sayang kamu' — dan itu selalu tulus! 💗"
+      }
+    }
+  ];
+
+  let currentQ = 0, score = 0, answered = false;
+
+  function renderQuestion() {
+    const data = quizData[currentQ];
+    document.getElementById('quizCounter').textContent = `Pertanyaan ${currentQ+1} dari ${quizData.length}`;
+    document.getElementById('quizQuestion').textContent = data.q;
+    document.getElementById('quizProgress').style.width = (currentQ / quizData.length * 100) + '%';
+
+    const optionsEl = document.getElementById('quizOptions');
+    optionsEl.innerHTML = '';
+    const letters = ['A','B','C','D'];
+    data.opts.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'quiz-option';
+      btn.innerHTML = `<span class="opt-letter">${letters[i]}</span> ${opt}`;
+      btn.onclick = () => selectOption(i, btn);
+      optionsEl.appendChild(btn);
+    });
+
+    const fb = document.getElementById('quizFeedback');
+    fb.className = 'quiz-feedback';
+    fb.textContent = '';
+    const nextBtn = document.getElementById('quizNextBtn');
+    nextBtn.className = 'quiz-next-btn';
+    nextBtn.textContent = currentQ < quizData.length - 1 ? 'Pertanyaan Selanjutnya →' : 'Lihat Hasil 🎉';
+    answered = false;
+  }
+
+  function selectOption(index, btn) {
+    if (answered) return;
+    answered = true;
+    const data = quizData[currentQ];
+    const allBtns = document.querySelectorAll('.quiz-option');
+    allBtns.forEach(b => b.disabled = true);
+
+    const fb = document.getElementById('quizFeedback');
+    if (index === data.correct) {
+      score++;
+      btn.classList.add('correct');
+      fb.className = 'quiz-feedback correct-fb show';
+      fb.textContent = '✅ ' + data.feedback.right;
+    } else {
+      btn.classList.add('wrong');
+      allBtns[data.correct].classList.add('correct');
+      fb.className = 'quiz-feedback wrong-fb show';
+      fb.textContent = '❌ ' + data.feedback.wrong;
+    }
+    document.getElementById('quizNextBtn').classList.add('show');
+  }
+
+  function nextQuestion() {
+    currentQ++;
+    if (currentQ >= quizData.length) {
+      showResult();
+    } else {
+      renderQuestion();
+    }
+  }
+
+  function showResult() {
+    document.getElementById('quizScreen').style.display = 'none';
+    const resultEl = document.getElementById('quizResult');
+    resultEl.classList.add('show');
+
+    const pct = score / quizData.length;
+    let emoji, title, msg;
+    if (pct === 1) {
+      emoji = '🏆'; title = 'SEMPURNA! Perfect Score!';
+      msg = `Wow, ${score} dari ${quizData.length} benar! Kamu emang yang paling kenal aku di dunia ini. Tidak ada yang tau aku lebih baik dari kamu — dan aku cinta kamu untuk itu! 💗`;
+    } else if (pct >= 0.7) {
+      emoji = '😍'; title = 'Luar Biasa!';
+      msg = `${score} dari ${quizData.length} benar! Hampir sempurna! Kamu kenal aku banget, tinggal sedikit lagi jadi expert tentang aku 😄 Makasih udah selalu perhatian sayang 💕`;
+    } else if (pct >= 0.4) {
+      emoji = '😅'; title = 'Lumayan Nih!';
+      msg = `${score} dari ${quizData.length} benar. Hmmm... ada yang masih perlu belajar lebih kenal aku kayaknya! 😜 Nggak apa-apa, masih banyak waktu kita untuk saling kenal lebih dalam! 💗`;
+    } else {
+      emoji = '😂'; title = 'Aduh, Ketahuan Deh!';
+      msg = `${score} dari ${quizData.length} benar... Kita harus lebih sering ngobrol kayaknya! 😂 Tapi tenang, aku tetap sayang kamu kok, no matter what! 💗`;
+    }
+
+    document.getElementById('resultEmoji').textContent = emoji;
+    document.getElementById('resultTitle').textContent = title;
+    document.getElementById('resultScore').textContent = `${score} / ${quizData.length}`;
+    document.getElementById('resultMsg').textContent = msg;
+    document.getElementById('quizProgress').style.width = '100%';
+    launchConfetti();
+  }
+
+  function restartQuiz() {
+    currentQ = 0; score = 0;
+    document.getElementById('quizResult').classList.remove('show');
+    document.getElementById('quizScreen').style.display = 'block';
+    renderQuestion();
+  }
+
+  // Init quiz
+  renderQuestion();
+
+  // Custom Cursor
+  const cursor = document.getElementById('cursor');
+  const trail = document.getElementById('cursorTrail');
+  let mx = 0, my = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+    setTimeout(() => {
+      trail.style.left = mx + 'px';
+      trail.style.top = my + 'px';
+    }, 80);
+  });
+
+  // Sparkle on click
+  document.addEventListener('click', e => {
+    const emojis = ['✦','✧','♡','✿','★','🌸','💕'];
+    for(let i = 0; i < 5; i++) {
+      const s = document.createElement('div');
+      s.className = 'sparkle';
+      s.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      s.style.left = (e.clientX + (Math.random()-0.5)*60) + 'px';
+      s.style.top = (e.clientY + (Math.random()-0.5)*60) + 'px';
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 800);
+    }
+  });
+
+  // Floating Particles
+  const particlesEl = document.getElementById('particles');
+  const emojis = ['🌸','💕','✦','🎀','💗','✿','♡','🌷'];
+  function spawnParticle() {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+    p.style.left = Math.random()*100 + 'vw';
+    p.style.fontSize = (0.8 + Math.random()*1.2) + 'rem';
+    const dur = 6 + Math.random()*8;
+    p.style.animationDuration = dur + 's';
+    p.style.animationDelay = Math.random()*4 + 's';
+    particlesEl.appendChild(p);
+    setTimeout(() => p.remove(), (dur+4)*1000);
+  }
+  for(let i=0;i<20;i++) spawnParticle();
+  setInterval(spawnParticle, 1200);
+
+  // Scroll Reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if(e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i*80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Confetti
+  function launchConfetti() {
+    const canvas = document.getElementById('confettiCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const colors = ['#e8578a','#f472b6','#fbcfe8','#fce7f3','#f9a8d4','#ffffff','#fda4af'];
+
+    for(let i=0;i<180;i++){
+      particles.push({
+        x: Math.random()*canvas.width,
+        y: -20,
+        vx: (Math.random()-0.5)*6,
+        vy: 3+Math.random()*5,
+        r: 5+Math.random()*8,
+        color: colors[Math.floor(Math.random()*colors.length)],
+        rot: Math.random()*360,
+        rotV: (Math.random()-0.5)*10,
+        shape: Math.random() > 0.5 ? 'rect' : 'circle'
+      });
+    }
+
+    let frame = 0;
+    function animate(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy; p.vy += 0.1; p.rot += p.rotV;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot*Math.PI/180);
+        ctx.fillStyle = p.color;
+        if(p.shape==='rect'){
+          ctx.fillRect(-p.r/2, -p.r/2, p.r, p.r/2);
+        } else {
+          ctx.beginPath();
+          ctx.arc(0,0,p.r/2,0,Math.PI*2);
+          ctx.fill();
+        }
+        ctx.restore();
+      });
+      frame++;
+      if(frame < 180) requestAnimationFrame(animate);
+      else { ctx.clearRect(0,0,canvas.width,canvas.height); }
+    }
+    animate();
+
+    // Bounce the cake
+    const cake = document.querySelector('.cake-container');
+    cake.style.animation = 'none';
+    cake.textContent = '🎂✨';
+    setTimeout(() => {
+      cake.style.animation = 'cakeWiggle 2s ease-in-out infinite';
+    }, 100);
+  }
+</script>
+</body>
+</html>
